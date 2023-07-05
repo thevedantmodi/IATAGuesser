@@ -5,12 +5,11 @@ function printCode () {
 
     let board = document.getElementById("game-board");
 
-    let code = document.createElement("p");
-    code.innerHTML = 'Hi!';
+    let codeBody = document.createElement("p");
+    let code = CODES[Math.floor(Math.random() * CODES.length)]
+    codeBody.innerHTML = `${code}`;
     
     board.appendChild(code);
-
-    console.log(CODES[Math.floor(Math.random() * CODES.length)])
 }
 
 printCode()
