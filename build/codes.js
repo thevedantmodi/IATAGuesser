@@ -1,0 +1,1 @@
+export const CODES = ["BOS", "LGW", "AMS", "MDE", "KIN", "MBJ"]
