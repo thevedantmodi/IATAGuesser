@@ -8,12 +8,15 @@ const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
 const output = document.getElementById("output");
+let airports = []
 
 fetch('IATAairports.json')
   .then(response => response.json())
-  .then(IATAairports => {
-    // Work with the retrieved JSON data
-    console.log(IATAairports);
+  .then(data => {
+    console.log(data);
+    for (let port of data) {
+        airports.push(port)
+    }
     main()
   })
   .catch(error => {
@@ -21,8 +24,9 @@ fetch('IATAairports.json')
   });
 
 function main () {
+    printCode()
 
-    printCode(chosen)
+
 }
 
 input.addEventListener("keypress", () => {
@@ -38,7 +42,7 @@ enter.addEventListener("click", () => {
     checkGuess(guess)
 })
 
-function printCode (chosen) {
+function printCode () {
     chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
     IATA_code.innerHTML = chosen
 }
@@ -48,4 +52,8 @@ function checkGuess (guess) {
     if (guess == chosen) {
         console.log("Correct")
     }
+
+
+    console.log(`Type of airports is ${typeof airports}`)
+    console.log(airports[0])
 }
