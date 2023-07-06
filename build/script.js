@@ -13,16 +13,17 @@ function printCode () {
 }
 
 function checkGuess (guess) {
+    console.log(`Guess is ${guess} and code is ${chosen}`)
     if (guess == chosen) {
-        output.innerHTML = "Correct"
-    } 
+        console.log("Correct")
+    }
 }
 
 printCode()
 
 input.addEventListener("keypress", () => {
     if (event.code == "Enter") {
-        alert("Enter key pressed")
+        console.log("enter clicked")
         enter.click()
     }
 })
@@ -30,6 +31,5 @@ input.addEventListener("keypress", () => {
 enter.addEventListener("click", () => {
     guess = input.value
     input.value = ""
+    checkGuess(guess)
 })
-
-checkGuess()
