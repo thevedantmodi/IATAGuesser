@@ -1,1 +1,1 @@
-export const CODES = ["BOS", "LGW", "AMS", "MDE", "KIN", "MBJ"]
+export const EASY_CODES = ["BOS", "LGW", "AMS", "MDE", "KIN", "MBJ"]
