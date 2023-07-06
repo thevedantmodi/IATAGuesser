@@ -8,15 +8,30 @@ const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
 const output = document.getElementById("output");
-let airports = []
+let airports_list = []
+let airports = new Map()
 
 fetch('IATAairports.json')
   .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    for (let port of data) {
-        airports.push(port)
+  .then(import_data => {
+    console.log(import_data);
+    let count = 0
+    for (let port of import_data) {
+        if (count == 43) {
+            console.log(typeof port)
+            console.log(port.city)
+        }
+        count++
+        airports.set(port.iata, port)
+        // airports_list.push(port)
     }
+    
+    // for (let element in airports_list) {
+    //     airports.set(element.iata, element)
+    // }
+
+    console.log(`Count is ${count}`)
+    
     main()
   })
   .catch(error => {
@@ -49,11 +64,13 @@ function printCode () {
 
 function checkGuess (guess) {
     console.log(`Guess is ${guess} and code is ${chosen}`)
-    if (guess == chosen) {
+    if (toIATA(guess) == chosen) {
         console.log("Correct")
     }
 
+}
 
-    console.log(`Type of airports is ${typeof airports}`)
-    console.log(airports[0])
+function toIATA (city) {
+    console.log("running toIATA")
+    console.log(airports.has("BOS")) //should be true
 }
