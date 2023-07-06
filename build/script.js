@@ -1,4 +1,12 @@
 import { EASY_CODES } from "./codes.js";
+import data from './IATAairports.json'
+
+console.log(data);
+
+// const airports = require('../node_modules/airport-codes')
+
+// console.log(airports.findWhere({ iata: 'LAX' }).get('name'));
+
 
 let guess = ""
 let chosen = ""
@@ -33,3 +41,4 @@ enter.addEventListener("click", () => {
     input.value = ""
     checkGuess(guess)
 })
+
