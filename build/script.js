@@ -1,7 +1,20 @@
 import { EASY_CODES } from "./codes.js";
-import data from './IATAairports.json'
+// import airports from './IATAairports.json' assert {type: 'json'};
 
-console.log(data);
+fetch('IATAairports.json')
+  .then(response => response.json())
+  .then(IATAairports => {
+    // Work with the retrieved JSON data
+    console.log(IATAairports);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+// const airports = JSON.parse('./IATAairports.json')
+
+airports
+
 
 // const airports = require('../node_modules/airport-codes')
 
