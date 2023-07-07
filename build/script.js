@@ -56,6 +56,7 @@ function generateCode() {
         return
     } else {
         console.log("Generating again!")
+        console.log(`The repeat was ${chosen}`)
         generateCode()
     }
 }
