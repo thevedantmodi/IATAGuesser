@@ -25,9 +25,22 @@
         <h2 id="IATA-code"></h2>
         <h3 id="score-strikes"></h3>
         <input type="text" id="input-field"/>
-        <h3 id="output"></h3>
         <button id="enter-btn">ENTER</button>
     </div>
+    <div class="popup">
+        <header>
+          <span>Share your results</span>
+          <div class="close"><i class="uil uil-times"></i></div>
+        </header>
+        <div class="content">
+          <div class="field">
+            <i class="url-icon uil uil-link"></i>
+            <!-- <input type="text" readonly value="" id=""> -->
+            <p id="results"></p>
+            <button>Copy</button>
+          </div>
+        </div>
+      </div>
     <script src="script.js" type="module"></script>
     <script
 src="https://code.jquery.com/jquery-3.6.0.min.js"

@@ -10,7 +10,8 @@ const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
 const score_strikes = document.getElementById("score-strikes");
-const output = document.getElementById("output");
+const results = document.getElementById("results");
+const popup = document.querySelector(".popup")
 
 let airports = new Map()
 
@@ -52,7 +53,8 @@ function trackScore () {
 
 function gameOver() {
     if (strikes >= 3) {
-        
+        results.innerHTML = `Wow! I just played IATAGuesser and got a score of ${score}`
+        popup.classList.toggle("show");
     }
 }
 
@@ -103,7 +105,6 @@ function correct () {
     toastr.success("Correct!")
     score++
     console.log(score)
-
 }
 
 function strike () {
