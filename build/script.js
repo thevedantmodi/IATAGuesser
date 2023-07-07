@@ -2,6 +2,7 @@ import { EASY_CODES } from "./codes.js";
 
 let guess = ""
 let chosen = ""
+let used = []
 const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
@@ -28,7 +29,6 @@ function main () {
 
 input.addEventListener("keypress", () => {
     if (event.code == "Enter") {
-        console.log("enter clicked")
         enter.click()
     }
 })
@@ -40,14 +40,29 @@ enter.addEventListener("click", () => {
 })
 
 function printCode () {
-    chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
+
+
+    generateCode()
+    used.push(chosen)
+
+
     IATA_code.innerHTML = chosen
+}
+
+function generateCode() {
+    chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
+
+    if (!used.includes(chosen)) {
+        return
+    } else {
+        console.log("Generating again!")
+        generateCode()
+    }
 }
 
 function checkGuess (guess) {
     if (guess === toCity(chosen)) {
         toastr.success("Correct!")
-        console.log("Regenerating")
         printCode()
     } else {
         toastr.error("Wrong! That's a strike!")
