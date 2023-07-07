@@ -45,17 +45,16 @@ function printCode () {
 }
 
 function checkGuess (guess) {
-    console.log(guess)
     if (guess === toCity(chosen)) {
         toastr.success("Correct!")
+        console.log("Regenerating")
+        printCode()
     } else {
         toastr.error("Wrong! That's a strike!")
     }
 }
 
 function toCity (code) {
-    console.log("here")
     const port = airports.get(code)
-    console.log(typeof port.city)
     return port.city
 }
