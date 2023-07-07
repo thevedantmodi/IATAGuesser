@@ -3,9 +3,13 @@ import { EASY_CODES } from "./codes.js";
 let guess = ""
 let chosen = ""
 let used = []
+let score = 0
+let strikes = 0
+let score_strikes_str = ""
 const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
+const score_strikes = document.getElementById("score-strikes");
 const output = document.getElementById("output");
 
 let airports = new Map()
@@ -17,13 +21,15 @@ fetch('IATAairports.json')
     for (let port of data) {
         airports.set(port.iata, port)
     }
-    main()
+    turn()
   })
   .catch(error => {
     console.error('Error:', error);
   });
 
-function main () {
+function turn () {
+    gameOver()
+    trackScore()
     printCode()
 }
 
@@ -39,6 +45,17 @@ enter.addEventListener("click", () => {
     checkGuess(guess)
 })
 
+function trackScore () {
+    score_strikes_str = `Score: ${score}    Strikes: ${strikes}`
+    score_strikes.innerHTML = score_strikes_str
+}
+
+function gameOver() {
+    if (strikes >= 3) {
+        
+    }
+}
+
 function printCode () {
     generateCode()
     used.push(chosen)
@@ -47,7 +64,6 @@ function printCode () {
 
 function generateCode() {
     chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
-
     if (!used.includes(chosen)) {
         return
     } else {
@@ -59,11 +75,58 @@ function generateCode() {
 
 function checkGuess (guess) {
     if (guess === toCity(chosen)) {
-        toastr.success("Correct!")
-        printCode()
+        correct()
     } else {
-        toastr.error("Wrong! That's a strike!")
+        strike()
     }
+    turn()
+}
+
+function correct () {
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "1000",
+        "hideDuration": "1500",
+        "timeOut": "1700",
+        "extendedTimeOut": "1500",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+    toastr.success("Correct!")
+    score++
+    console.log(score)
+
+}
+
+function strike () {
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "1000",
+        "hideDuration": "1500",
+        "timeOut": "1700",
+        "extendedTimeOut": "1500",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+    toastr.error(`Wrong! ${chosen} is the code for ${toCity(chosen)}`)
+    score++
+    strikes++
 }
 
 function toCity (code) {
