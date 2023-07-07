@@ -40,12 +40,8 @@ enter.addEventListener("click", () => {
 })
 
 function printCode () {
-
-
     generateCode()
     used.push(chosen)
-
-
     IATA_code.innerHTML = chosen
 }
 
