@@ -14,4 +14,4 @@ Open the [GitHub site](https://thevedantmodi.github.io/IATAGuesser/), where the 
 
 - [toastr by CodeSeven](https://github.com/CodeSeven/toastr) was an API that proved useful for game notifications, that made it look a little prettier than the default browser notifications
 
-
+- [Plex Sans](https://fonts.google.com/share?selection.family=IBM%2BPlex%2BSans:wght@400;600) is the font family I used, at 400 pixels for the body, and 600 pixels for the heading.
