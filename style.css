@@ -12,6 +12,10 @@ h1 {
     font-weight: 400;
   }
 
+  #enter-btn {
+    padding-top: 20px;
+  }
+
   #share {
     text-align: center;
   }
