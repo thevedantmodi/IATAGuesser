@@ -7,6 +7,10 @@ h1 {
     align-items: center;
     flex-direction: column;
   }
+
+  #share {
+    text-align: center;
+  }
   
   .letter-box {
     border: 2px solid gray;

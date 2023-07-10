@@ -6,12 +6,14 @@ let used = []
 let score = 0
 let strikes = 0
 let score_strikes_str = ""
+let results = ""
 const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
 const score_strikes = document.getElementById("score-strikes");
-const results = document.getElementById("results");
-const popup = document.querySelector(".popup")
+const share = document.getElementById("share-msg");
+const copy = document.getElementById("copy-button");
+
 
 let airports = new Map()
 
@@ -46,6 +48,28 @@ enter.addEventListener("click", () => {
     checkGuess(guess)
 })
 
+copy.addEventListener("click", () => {
+    navigator.clipboard.writeText(results);
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": false,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "1000",
+        "hideDuration": "1500",
+        "timeOut": "1700",
+        "extendedTimeOut": "1500",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+    toastr.success("Copied to clipboard!")
+})
+
 function trackScore () {
     score_strikes_str = `Score: ${score}    Strikes: ${strikes}`
     score_strikes.innerHTML = score_strikes_str
@@ -53,8 +77,10 @@ function trackScore () {
 
 function gameOver() {
     if (strikes >= 3) {
-        results.innerHTML = `Wow! I just played IATAGuesser and got a score of ${score}`
-        popup.classList.toggle("show");
+        results = `Wow! I just played IATAGuesser and got a score of ${score}`
+        share.innerHTML = results
+        copy.hidden = false
+        enter.hidden = true
     }
 }
 
