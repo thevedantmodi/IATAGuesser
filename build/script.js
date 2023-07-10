@@ -21,7 +21,7 @@ fetch('IATAairports.json')
   .then(data => {
     console.log(data);
     for (let port of data) {
-        airports.set(port.iata, port)
+        airports.set(port.iata, port) // Sets the airport code with key IATA
     }
     turn()
   })
