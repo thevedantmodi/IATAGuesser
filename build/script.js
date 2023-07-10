@@ -76,9 +76,8 @@ function trackScore () {
 
 function gameOver() {
     if (strikes >= 3) {
-        console.log("running end game")
         results = `Wow! I just played IATAGuesser and got a score of ${score}`
-        
+
         share.hidden = false
         copy.hidden = false
         enter.hidden = true
@@ -95,13 +94,16 @@ function printCode () {
 
 function generateCode() {
     chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
-    if (!used.includes(chosen)) {
-        return
-    } else {
-        console.log("Generating again!")
-        console.log(`The repeat was ${chosen}`)
-        generateCode()
+    while (used.includes(chosen)) {
+        chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
     }
+    // if (!used.includes(chosen)) {
+    //     return
+    // } else {
+    //     console.log("Generating again!")
+    //     console.log(`The repeat was ${chosen}`)
+    //     generateCode()
+    // }
 }
 
 function checkGuess (guess) {
