@@ -10,8 +10,8 @@ A big trouble that I encountered was understanding the algorithm to generate not
 Open the GitHub site, where the page is hosted, refresh the page the reload your results! Be sure to share your results at the end of the game!
 
 # Credits
-- [airportsdata by Mike Borsetti]https://github.com/mborsetti/airportsdata was a very useful dataset for taking the IATA codes I wanted, and easily retrieving information about them
+- [airportsdata by Mike Borsetti] https://github.com/mborsetti/airportsdata was a very useful dataset for taking the IATA codes I wanted, and easily retrieving information about them
 
-- [toastr by CodeSeven]https://github.com/CodeSeven/toastr was an API that proved useful for game notifications, that made it look a little prettier than the default browser notifications
+- [toastr by CodeSeven] https://github.com/CodeSeven/toastr was an API that proved useful for game notifications, that made it look a little prettier than the default browser notifications
 
 
