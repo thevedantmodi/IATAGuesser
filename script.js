@@ -1,4 +1,4 @@
-import { EASY_CODES } from "./codes.js";
+import { EASY_US_CODES } from "./codes.js";
 
 let guess = ""
 let chosen = ""
@@ -93,9 +93,9 @@ function printCode () {
 }
 
 function generateCode() {
-    chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
+    chosen = EASY_US_CODES[Math.floor(Math.random() * EASY_US_CODES.length)]
     while (used.includes(chosen)) {
-        chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
+        chosen = EASY_US_CODES[Math.floor(Math.random() * EASY_US_CODES.length)]
     }
 }
 
