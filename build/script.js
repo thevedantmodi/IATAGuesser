@@ -97,13 +97,6 @@ function generateCode() {
     while (used.includes(chosen)) {
         chosen = EASY_CODES[Math.floor(Math.random() * EASY_CODES.length)]
     }
-    // if (!used.includes(chosen)) {
-    //     return
-    // } else {
-    //     console.log("Generating again!")
-    //     console.log(`The repeat was ${chosen}`)
-    //     generateCode()
-    // }
 }
 
 function checkGuess (guess) {
