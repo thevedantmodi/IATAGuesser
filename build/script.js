@@ -14,7 +14,6 @@ const score_strikes = document.getElementById("score-strikes");
 const share = document.getElementById("share-msg");
 const copy = document.getElementById("copy-button");
 
-
 let airports = new Map()
 
 fetch('IATAairports.json')
@@ -77,10 +76,14 @@ function trackScore () {
 
 function gameOver() {
     if (strikes >= 3) {
+        console.log("running end game")
         results = `Wow! I just played IATAGuesser and got a score of ${score}`
-        share.innerHTML = results
+        
+        share.hidden = false
         copy.hidden = false
         enter.hidden = true
+
+        share.innerHTML = results
     }
 }
 
