@@ -4,6 +4,19 @@ h1 {
     font-weight: 600;
    }
 
+#easy {
+  display: inline-block;
+}
+
+#med {
+  display: inline-block;
+}
+
+#hard {
+  display: inline-block;
+}
+
+
 #difficulty-chooser {
   display: flex;
   align-items: center;
