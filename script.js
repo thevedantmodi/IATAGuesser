@@ -1,5 +1,7 @@
 import { EASY_US_CODES } from "./codes.js";
 
+
+
 let guess = ""
 let chosen = ""
 let used = []
@@ -14,15 +16,17 @@ const score_strikes = document.getElementById("score-strikes");
 const share = document.getElementById("share-msg");
 const copy = document.getElementById("copy-button");
 
+
 let airports = new Map()
 
 fetch('IATAairports.json')
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    for (let port of data) {
+    for (let port of data) {  
         airports.set(port.iata, port) // Sets the airport code with key IATA
     }
+    console.log("done index")
     turn()
   })
   .catch(error => {
