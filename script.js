@@ -126,9 +126,9 @@ function printCode () {
 }
 
 function generateCode() {
-    chosen = EASY_US_CODES[Math.floor(Math.random() * EASY_US_CODES.length)]
+    chosen = CODES[Math.floor(Math.random() * CODES.length)]
     while (used.includes(chosen)) {
-        chosen = EASY_US_CODES[Math.floor(Math.random() * EASY_US_CODES.length)]
+        chosen = CODES[Math.floor(Math.random() * CODES.length)]
     }
 }
 
