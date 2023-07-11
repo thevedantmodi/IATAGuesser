@@ -1,4 +1,18 @@
 import { EASY_US_CODES } from "./codes.js";
+import { EASY_INTL_CODES } from "./codes.js";
+import { MED_US_CODES } from "./codes.js";
+import { MED_INTL_CODES } from "./codes.js";
+
+
+const IATA_code = document.getElementById("IATA-code");
+const input = document.getElementById("input-field");
+const enter = document.getElementById("enter-btn");
+const score_strikes = document.getElementById("score-strikes");
+const share = document.getElementById("share-msg");
+const copy = document.getElementById("copy-button");
+
+
+
 
 
 
@@ -9,12 +23,6 @@ let score = 0
 let strikes = 0
 let score_strikes_str = ""
 let results = ""
-const IATA_code = document.getElementById("IATA-code");
-const input = document.getElementById("input-field");
-const enter = document.getElementById("enter-btn");
-const score_strikes = document.getElementById("score-strikes");
-const share = document.getElementById("share-msg");
-const copy = document.getElementById("copy-button");
 
 
 let airports = new Map()
@@ -72,6 +80,10 @@ copy.addEventListener("click", () => {
       }
     toastr.success("Copied to clipboard!")
 })
+
+function init () {
+    
+}
 
 function trackScore () {
     score_strikes_str = `Score: ${score}    Strikes: ${strikes}`
