@@ -11,6 +11,8 @@ const hard = document.getElementById("hard")
 
 let CODES = []
 
+let difficulty = ""
+
 const game_board = document.getElementById("game-board")
 game_board.style.visibility = 'hidden'
 const IATA_code = document.getElementById("IATA-code");
@@ -51,14 +53,17 @@ function turn () {
 
 easy.addEventListener("click", () => {
     initDataset(EASY_US_CODES, EASY_INTL_CODES)
+    difficulty = "easy"
 })
 
 med.addEventListener("click", () => {
     initDataset(MED_US_CODES, MED_INTL_CODES)
+    difficulty = "medium"
 })
 
 hard.addEventListener("click", () => {
     initDataset(EASY_US_CODES, EASY_INTL_CODES)
+    difficulty = "hard"
 })
 
 input.addEventListener("keypress", () => {
@@ -110,7 +115,8 @@ function trackScore () {
 
 function gameOver() {
     if (strikes >= 3) {
-        results = `Wow! I just played IATAGuesser and got a score of ${score}`
+        results = `Wow! I just played IATAGuesser on ${difficulty} difficulty and got a score of ${score}!
+        You can play at vedantmodi.com/IATAGuesser`
 
         share.hidden = false
         copy.hidden = false
