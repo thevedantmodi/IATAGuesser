@@ -12,6 +12,7 @@ const hard = document.getElementById("hard")
 let CODES = []
 
 const game_board = document.getElementById("game-board")
+game_board.style.visibility = 'hidden'
 const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
@@ -96,8 +97,8 @@ copy.addEventListener("click", () => {
 
 function initDataset  (DATASET1, DATASET2) {
     CODES = [...DATASET1, ...DATASET2]
-    diff_chooser.hidden = true
-    game_board.hidden = false // Ready to play after here!
+    diff_chooser.style.visibility = 'hidden'
+    game_board.style.visibility = 'visible' // Ready to play after here!
     turn()
 }
 

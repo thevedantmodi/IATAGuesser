@@ -4,6 +4,20 @@ h1 {
     font-weight: 600;
    }
 
+#difficulty-chooser {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+}
+
+#diff-text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
    #game-board {
     display: flex;
     align-items: center;
