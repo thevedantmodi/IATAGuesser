@@ -5,6 +5,7 @@ import { MED_INTL_CODES } from "./codes.js";
 
 const diff_chooser = document.getElementById("difficulty-chooser")
 const easy = document.getElementById("easy")
+
 const med = document.getElementById("med")
 const hard = document.getElementById("hard")
 
@@ -36,8 +37,6 @@ fetch('IATAairports.json')
     for (let port of data) {  
         airports.set(port.iata, port) // Sets the airport code with key IATA
     }
-    console.log("done index")
-    turn()
   })
   .catch(error => {
     console.error('Error:', error);
@@ -49,16 +48,16 @@ function turn () {
     printCode()
 }
 
-easy.addEventListener("keypress", () => {
-    CODES = initDataset(EASY_US_CODES, EASY_INTL_CODES)
+easy.addEventListener("click", () => {
+    initDataset(EASY_US_CODES, EASY_INTL_CODES)
 })
 
-med.addEventListener("keypress", () => {
-    CODES = initDataset(MED_US_CODES, MED_INTL_CODES)
+med.addEventListener("click", () => {
+    initDataset(MED_US_CODES, MED_INTL_CODES)
 })
 
-hard.addEventListener("keypress", () => {
-    CODES = initDataset(EASY_US_CODES, EASY_INTL_CODES)
+hard.addEventListener("click", () => {
+    initDataset(EASY_US_CODES, EASY_INTL_CODES)
 })
 
 input.addEventListener("keypress", () => {
@@ -96,13 +95,14 @@ copy.addEventListener("click", () => {
 })
 
 function initDataset  (DATASET1, DATASET2) {
-    const DATASET_CODES = [...DATASET1, ...DATASET2]
+    CODES = [...DATASET1, ...DATASET2]
     diff_chooser.hidden = true
     game_board.hidden = false // Ready to play after here!
-    return DATASET_CODES
+    turn()
 }
 
 function trackScore () {
+    console.log(`Score: ${score}    Strikes: ${strikes}`)
     score_strikes_str = `Score: ${score}    Strikes: ${strikes}`
     score_strikes.innerHTML = score_strikes_str
 }
@@ -133,7 +133,9 @@ function generateCode() {
 }
 
 function checkGuess (guess) {
+    console.log(`Guess is ${guess}`)
     if (guess === toCity(chosen)) {
+        console.log("correct")
         correct()
     } else {
         strike()
@@ -147,7 +149,7 @@ function correct () {
         "debug": false,
         "newestOnTop": true,
         "progressBar": false,
-        "positionClass": "toast-top-full-width",
+        "positionClass": "toast-top-center",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "1000",
@@ -161,7 +163,6 @@ function correct () {
       }
     toastr.success("Correct!")
     score++
-    console.log(score)
 }
 
 function strike () {
@@ -170,7 +171,7 @@ function strike () {
         "debug": false,
         "newestOnTop": true,
         "progressBar": false,
-        "positionClass": "toast-top-full-width",
+        "positionClass": "toast-top-center",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "1000",
@@ -183,7 +184,6 @@ function strike () {
         "hideMethod": "fadeOut"
       }
     toastr.error(`Wrong! ${chosen} is the code for ${toCity(chosen)}`)
-    score++
     strikes++
 }
 
