@@ -22,8 +22,13 @@
 
 <body>
     <h1>IATA Guesser</h1>
-
-    <div id="game-board">
+    <div id="difficulty-chooser">
+        <h3 id="diff-text">Choose your difficulty</h3>
+        <button id="easy">EASY</button>
+        <button id="med">MEDIUM</button>
+        <button id="hard">HARD</button>
+    </div>
+    <div id="game-board" hidden>
         <h2 id="IATA-code"></h2>
         <h3 id="score-strikes"></h3>
         <input type="text" id="input-field"/>

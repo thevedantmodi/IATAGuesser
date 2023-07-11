@@ -3,18 +3,20 @@ import { EASY_INTL_CODES } from "./codes.js";
 import { MED_US_CODES } from "./codes.js";
 import { MED_INTL_CODES } from "./codes.js";
 
+const diff_chooser = document.getElementById("difficulty-chooser")
+const easy = document.getElementById("easy")
+const med = document.getElementById("med")
+const hard = document.getElementById("hard")
 
+let CODES = []
+
+const game_board = document.getElementById("game-board")
 const IATA_code = document.getElementById("IATA-code");
 const input = document.getElementById("input-field");
 const enter = document.getElementById("enter-btn");
 const score_strikes = document.getElementById("score-strikes");
 const share = document.getElementById("share-msg");
 const copy = document.getElementById("copy-button");
-
-
-
-
-
 
 let guess = ""
 let chosen = ""
@@ -46,6 +48,18 @@ function turn () {
     trackScore()
     printCode()
 }
+
+easy.addEventListener("keypress", () => {
+    CODES = initDataset(EASY_US_CODES, EASY_INTL_CODES)
+})
+
+med.addEventListener("keypress", () => {
+    CODES = initDataset(MED_US_CODES, MED_INTL_CODES)
+})
+
+hard.addEventListener("keypress", () => {
+    CODES = initDataset(EASY_US_CODES, EASY_INTL_CODES)
+})
 
 input.addEventListener("keypress", () => {
     if (event.code == "Enter") {
@@ -81,8 +95,11 @@ copy.addEventListener("click", () => {
     toastr.success("Copied to clipboard!")
 })
 
-function init () {
-    
+function initDataset  (DATASET1, DATASET2) {
+    const DATASET_CODES = [...DATASET1, ...DATASET2]
+    diff_chooser.hidden = true
+    game_board.hidden = false // Ready to play after here!
+    return DATASET_CODES
 }
 
 function trackScore () {
